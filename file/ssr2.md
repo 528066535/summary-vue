@@ -5,7 +5,7 @@
 
 ### 构建图
 
-![构建图](/img/ssr-1.png)
+!![构建图](/img/ssr-1.png)
 
  图中分三大块，Source表示我们写的代码，会被webpack打包成两份，其中一份（Server Bundle）在Node Server中使用，用来生成第一个HTML并返回给浏览器。
  Browser中拿到的是webpack打包的Client Bundle 用来接管页面剩余的逻辑。
