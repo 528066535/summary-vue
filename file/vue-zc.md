@@ -41,7 +41,7 @@ ES6的Proxy。vue2.x 版本使用的是前者。Vue3.x会用ES6的Proxy方法去
 上代码：
 
     function defineReactive(data, key, val) {
-        **let dep = [] //新增**
+        __let dep = [] //新增__
         Object.defineProperty(data, key, {
             enumerable: true,
             configurable: true,
