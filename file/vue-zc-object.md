@@ -254,9 +254,12 @@ get方法的最后，我们再把window.target置空，并返回当前值。
 
 我们知道了变化侦测的原理是利用Object.defineProperty的get方法来增加依赖，set方法来通知Watcher，那么根据这个基本的原理我们可以推断出，有
 些操作，并不会调用到get或者set方法，比如向object新增一个属性，这时候，并不会调用get或者set，又比如，我们调用delete方法，删除object的某个
-属性，也不会调用到这两个方法。
+属性，也不会调用到这两个方法。另外Object.assign()也不支持。
 
-为了解决这个问题，Vue提供了两个Api，vm.$set 方法和 vm.$delete方法。
+为了解决这个问题，Vue提供了两个Api，vm.$set 方法和 vm.$delete方法。而Object.assign可以用下面代码代替。
+
+    this.someObject = Object.assign({}, this.someObject, { a: 1, b: 2 })
+
 
 ### 总结
 
