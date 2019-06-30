@@ -1,6 +1,6 @@
 ## Object 的变化侦测
 
-实际上，Array的变化侦测与Object不同。
+Object 的变化侦测关键是通过Object.defineProperty方法实现。
 
 ### 什么是变化侦测
 
@@ -250,7 +250,7 @@ get方法的最后，我们再把window.target置空，并返回当前值。
 
 这样，我们就会对所有的data，增加侦测的功能了。当data中的任意属性发生变化时，这个属性对应的依赖（Watcher）就会接收到通知，并且发送给到其他地方。
 
-### 无法侦测的数据
+### 无法侦测的情况
 
 我们知道了变化侦测的原理是利用Object.defineProperty的get方法来增加依赖，set方法来通知Watcher，那么根据这个基本的原理我们可以推断出，有
 些操作，并不会调用到get或者set方法，比如向object新增一个属性，这时候，并不会调用get或者set，又比如，我们调用delete方法，删除object的某个
