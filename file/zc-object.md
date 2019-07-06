@@ -267,7 +267,7 @@ get方法的最后，我们再把window.target置空，并返回当前值。
 
 好不容易在百度上找到一个符合的图，所以就忽略解析指令的这部分吧。
 
-首先，我们会创建一个Vue实例，这时候会新建一个Observer实例，这时候把所有的data下的属性都遍历一遍，并且调用defineReactive方法，defineReactive
+首先，当我们新建一个Observer实例，这时候把所有的data下的属性都遍历一遍，并且调用defineReactive方法，defineReactive
 方法会检测当前要侦测的数据是否是对象，如果是的话，再继续新建一个Observer实例，这样就能把data中所有的属性都遍历到了。
 
 接下来，defineReactive方法调用了Object.defineProperty，劫持了所有属性，当调用到get方法的时候，会增加一个依赖（Watcher），当调用到set
