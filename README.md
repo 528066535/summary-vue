@@ -11,4 +11,10 @@
 
 #### [4. 变化侦测 之 Array的变化侦测](/file/zc-array.md)
 
-#### [5. 变化侦测 之 相关Api的实现](/file/zc-api.md)
+#### [5. 虚拟DOM 之 简介](/file/dom-introduce.md)
+
+#### [6. 虚拟DOM 之 patch](/file/dom-patch.md)
+
+#### [7. 模板编译 之 解析器](/file/dom-patch.md)
+
+#### [8. 模板编译 之 优化器和代码生成器](/file/dom-patch.md)
