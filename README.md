@@ -15,6 +15,4 @@
 
 #### [6. 虚拟DOM 之 patch](/file/dom-patch.md)
 
-#### [7. 模板编译 之 解析器](/file/dom-patch.md)
-
-#### [8. 模板编译 之 优化器和代码生成器](/file/dom-patch.md)
+#### [7. 模板编译](/file/mb.md)
