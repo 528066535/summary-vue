@@ -1,0 +1,56 @@
+vue3.0 响应式原理
+模拟原理代码
+```
+
+const toProxy = new weakMap() // 存放代理后的对象
+const toRow = new weakMap() // 存放代理前的对象
+
+function trigger() {
+  console.log('触发视图')
+}
+
+function isObject(target) {
+  reuturn typeof target === 'object' && target != null
+}
+
+function reactive(target) {
+  if (!isObject(target)) return target
+  // 如果target已经代理过，则直接返回对应的代理
+  if (toProxy.has(target)) return toProxy.get(target)
+  // 如果target是个代理，也直接返回代理
+  if (toRaw.get(target)) return target
+  let handle = {
+    set(target, key, value, receiver) {
+      // 这里注意，如果改变私有属性，不做视图更新
+      if (target.hasOwnProperty(key)) {
+        trigger()
+      }
+      return Reflect.set(target, key, value, receiver)
+    }
+    get(target, key, receiver) {
+      return Reflect.get(target, key, receiver)
+    }
+    deleteProperty(target, key, receiver) {
+      let res = Reflect.deleteProperty(target, key, receiver)
+      if (isObject(target[key])) {
+        return reactive(res)
+      }
+      return res
+    }
+  }
+  let observed = new Proxy(target, handle)
+  toProxy.set(target, observed)
+  // 如果是代理的对象进来了
+  toRow.set(observed, target)
+  return observed
+}
+
+let obj = {
+  a: [1, 2, 3],
+  b: '123'
+}
+
+let p = reactive(obj)
+p.a.push('4')
+
+```
